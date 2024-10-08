@@ -1,0 +1,65 @@
+/* src/Home.css */
+.home-container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #343a40;
+    color: #f8f9fa;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.sidebar-nav a {
+    color: #f8f9fa;
+    text-decoration: none;
+    display: block;
+    margin: 0.5rem 0;
+}
+
+.sidebar-nav a:hover {
+    text-decoration: underline;
+}
+
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    background-color: #f8f9fa;
+}
+
+.hero {
+    background: url('Logo-for-the-gym.webp') no-repeat center center ;
+    background-size: cover;
+    color: #f8f9fa;
+}
+
+.features .feature-card {
+    margin-bottom: 1.5rem;
+}
+
+.yearly-plans {
+    background-color: #e9ecef;
+}
+
+.plan-card {
+    margin-bottom: 1.5rem;
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+}
+
+.plan-card .btn-primary {
+    margin-top: 1rem;
+}
+*{
+    box-sizing: border-box;
+    text-decoration: none;
+}

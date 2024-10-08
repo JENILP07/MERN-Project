@@ -1,0 +1,28 @@
+src/SignIn.css
+.bg-dark {
+    background-color: #343a40 !important; /* Dark background color */
+}
+
+.sign-in-container {
+    max-width: 400px;
+    width: 100%;
+    border: 1px solid #6c757d; /* Slight border for better definition */
+}
+
+/* Dark theme styling */
+.bg-dark {
+    background-color: #343a40 !important;
+}
+
+.text-light {
+    color: #f8f9fa !important;
+}
+
+.bg-secondary {
+    background-color: #495057 !important; /* Slightly lighter background for input fields */
+}
+
+/* Optional: Customize link color */
+a.text-light {
+    color: #f8f9fa !important;
+}

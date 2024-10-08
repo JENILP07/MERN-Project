@@ -1,0 +1,13 @@
+/* src/AboutPage.css */
+
+.card-title {
+    font-weight: bold;
+}
+
+.card-body {
+    text-align: justify;
+}
+
+.list-group-item {
+    font-size: 1rem;
+}
