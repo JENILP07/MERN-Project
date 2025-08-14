@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 .App-logo {
@@ -14,18 +17,47 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-tertiary) 100%);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
 }
 
 .App-link {
-  color: #61dafb;
+  color: var(--primary-color);
+  transition: color var(--transition-fast);
+}
+
+.App-link:hover {
+  color: var(--primary-dark);
+}
+
+/* White theme specific content wrapper */
+.app-content {
+  background-color: var(--bg-primary);
+  min-height: calc(100vh - 80px);
+  padding: 0;
+}
+
+/* Enhanced white theme sections */
+.section-white {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.section-light {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.section-accent {
+  background-color: var(--bg-accent);
+  color: var(--text-primary);
 }
 
 @keyframes App-logo-spin {

@@ -1,28 +1,202 @@
-src/SignIn.css
-.bg-dark {
-    background-color: #343a40 !important; /* Dark background color */
+.signin-container {
+  min-height: 100vh;
+  position: relative;
 }
 
-.sign-in-container {
-    max-width: 400px;
-    width: 100%;
-    border: 1px solid #6c757d; /* Slight border for better definition */
+.signin-background {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Dark theme styling */
-.bg-dark {
-    background-color: #343a40 !important;
+.signin-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('../Components/Logo-for-the-gym.webp') no-repeat center center;
+  background-size: cover;
+  opacity: 0.1;
+  z-index: 1;
 }
 
-.text-light {
-    color: #f8f9fa !important;
+.signin-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
-.bg-secondary {
-    background-color: #495057 !important; /* Slightly lighter background for input fields */
+.signin-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  transition: all var(--transition-normal);
 }
 
-/* Optional: Customize link color */
-a.text-light {
-    color: #f8f9fa !important;
+.signin-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.signin-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.signin-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 0;
+}
+
+.modern-alert {
+  border: none;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+  border-left: 4px solid #ef4444;
+  color: #991b1b;
+  font-weight: 500;
+}
+
+.role-label {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.role-selector {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 2px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.role-selector:hover {
+  border-color: var(--primary-color);
+  background: rgba(99, 102, 241, 0.05);
+}
+
+.role-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.role-option input[type="radio"] {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: var(--primary-color);
+  cursor: pointer;
+}
+
+.role-option label {
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  margin: 0;
+}
+
+.modern-label {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.025em;
+}
+
+.modern-input {
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+  background: white;
+}
+
+.modern-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  background: white;
+}
+
+.modern-input::placeholder {
+  color: var(--gray-400);
+  font-weight: 400;
+}
+
+.modern-input:disabled {
+  background-color: var(--gray-100);
+  cursor: not-allowed;
+}
+
+.signin-footer {
+  color: var(--text-secondary);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.signin-link {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.signin-link:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+/* Loading Spinner */
+.spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+  border-width: 0.125em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .signin-title {
+    font-size: 2rem;
+  }
+  
+  .signin-subtitle {
+    font-size: 1rem;
+  }
+  
+  .signin-card .card-body {
+    padding: 2rem !important;
+  }
+  
+  .role-selector {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .signin-content {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .signin-title {
+    font-size: 1.75rem;
+  }
+  
+  .signin-card .card-body {
+    padding: 1.5rem !important;
+  }
 }
