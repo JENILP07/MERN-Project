@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "3010:3010"
+    environment:
+      - MONGO_URI=mongodb+srv://admin:admin123@cluster0.mongodb.net/gym?retryWrites=true&w=majority
+      - PORT=3010
+    restart: always
+
+  frontend:
+    build:
+      context: ./Frontend/gymmanagementsystem
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: always
