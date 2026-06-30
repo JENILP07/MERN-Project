@@ -11,6 +11,7 @@ const AdminDashboard = () => {
   const [members, setMembers] = useState([]);
   const [showAddModal, setShowAddModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [memberToDelete, setMemberToDelete] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [alert, setAlert] = useState({ show: false, message: '', variant: '' });
@@ -27,6 +28,11 @@ const AdminDashboard = () => {
   });
   
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("id");
+    navigate("/SignIn");
+  };
 
   useEffect(() => {
     setIsLoading(true);
@@ -147,27 +153,28 @@ const AdminDashboard = () => {
             animate="visible"
             className="dashboard-header mb-5"
           >
-            <Row className="align-items-center">
-              <Col md={8}>
-                <h1 className="dashboard-title">
-                  Admin <span className="gradient-text">Dashboard</span>
-                </h1>
-                <p className="dashboard-subtitle">
-                  Manage gym members, track subscriptions, and oversee operations
-                </p>
-              </Col>
-              <Col md={4} className="text-md-end">
-                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                  <Button
-                    className="btn-modern btn-primary-modern"
-                    size="lg"
-                    onClick={() => setShowAddModal(true)}
-                  >
-                    + Add New Member
-                  </Button>
-                </motion.div>
-              </Col>
-            </Row>
+            <div className="d-flex justify-content-between align-items-center flex-wrap gap-3">
+              <div>
+                <h2 className="dashboard-title">Admin Dashboard</h2>
+                <p className="dashboard-subtitle">Manage gym members, registrations, and plans</p>
+              </div>
+              <div className="d-flex gap-2">
+                <Button 
+                  variant="none"
+                  className="btn-cyber-outline"
+                  onClick={() => setShowLogoutModal(true)}
+                >
+                  Logout
+                </Button>
+                <Button
+                  className="btn-modern btn-primary-modern"
+                  size="lg"
+                  onClick={() => setShowAddModal(true)}
+                >
+                  + Add New Member
+                </Button>
+              </div>
+            </div>
           </motion.div>
 
           {/* Stats Cards */}
@@ -308,28 +315,22 @@ const AdminDashboard = () => {
                               {member.Plan || 'No Plan'}
                             </Badge>
                           </td>
-                          <td>
-                            <div className="action-buttons">
-                              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                                <Button
-                                  variant="outline-primary"
-                                  size="sm"
-                                  onClick={() => handleEdit(member._id)}
-                                  className="me-2"
-                                >
-                                  Edit
-                                </Button>
-                              </motion.div>
-                              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                                <Button
-                                  variant="outline-danger"
-                                  size="sm"
-                                  onClick={() => handleDeleteConfirm(member)}
-                                >
-                                  Delete
-                                </Button>
-                              </motion.div>
-                            </div>
+                          <td className="action-buttons">
+                            <Button 
+                              variant="none" 
+                              className="btn-cyber-outline"
+                              onClick={() => navigate(`/Updatepage/${member._id}`)}
+                            >
+                              Edit
+                            </Button>
+                            <Button 
+                              variant="none" 
+                              className="btn-cyber"
+                              style={{ background: 'rgba(239, 68, 68, 0.1)', color: '#ef4444', borderColor: 'rgba(239, 68, 68, 0.3)' }}
+                              onClick={() => handleDeleteConfirm(member)}
+                            >
+                              Delete
+                            </Button>
                           </td>
                         </motion.tr>
                       ))}
@@ -453,12 +454,40 @@ const AdminDashboard = () => {
             This action will permanently remove <strong>{memberToDelete?.Name}</strong> from the system.
           </p>
         </Modal.Body>
-        <Modal.Footer className="border-0">
-          <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>
+        <Modal.Footer className="modal-footer-modern border-0">
+          <Button variant="none" className="btn-cyber-outline" onClick={() => setShowDeleteModal(false)}>
             Cancel
           </Button>
-          <Button variant="danger" onClick={handleDelete}>
+          <Button 
+            variant="none" 
+            className="btn-cyber"
+            style={{ background: '#ef4444', color: '#ffffff', borderColor: '#ef4444' }}
+            onClick={handleDelete}
+          >
             Delete Member
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Logout Confirmation Modal */}
+      <Modal show={showLogoutModal} onHide={() => setShowLogoutModal(false)} centered>
+        <Modal.Header closeButton className="modal-header-modern border-0">
+          <Modal.Title>Confirm Logout</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="modal-body-modern text-center">
+          <h5>Are you sure you want to log out?</h5>
+        </Modal.Body>
+        <Modal.Footer className="modal-footer-modern border-0">
+          <Button variant="none" className="btn-cyber-outline" onClick={() => setShowLogoutModal(false)}>
+            Cancel
+          </Button>
+          <Button 
+            variant="none" 
+            className="btn-cyber"
+            style={{ background: '#ef4444', color: '#ffffff', borderColor: '#ef4444' }}
+            onClick={handleLogout}
+          >
+            Logout
           </Button>
         </Modal.Footer>
       </Modal>

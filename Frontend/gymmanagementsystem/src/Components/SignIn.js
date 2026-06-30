@@ -94,14 +94,14 @@ const SignIn = () => {
           <Row className="justify-content-center align-items-center min-vh-100">
             <Col xs={12} sm={10} md={8} lg={6} xl={5}>
               <motion.div variants={itemVariants}>
-                <Card className="signin-card">
+                <Card className="signin-card border-0">
                   <Card.Body className="p-5">
                     <motion.div 
                       variants={itemVariants}
                       className="text-center mb-4"
                     >
                       <h2 className="signin-title">
-                        Welcome <span className="gradient-text">Back</span>
+                        Welcome <span className="text-gradient-primary">Back</span>
                       </h2>
                       <p className="signin-subtitle">
                         Sign in to your account to continue
@@ -122,74 +122,69 @@ const SignIn = () => {
 
                     <motion.div variants={itemVariants}>
                       <Form onSubmit={handleSubmit}>
-                        <Row className="mb-4">
-                          <Col>
-                            <Form.Label className="role-label">I am a:</Form.Label>
-                            <div className="role-selector">
-                              <Form.Check
+                        <div className="mb-4">
+                          <label className="role-label">I am a:</label>
+                          <div className="role-selector">
+                            <div className="role-option">
+                              <input
                                 type="radio"
                                 id="member-role"
                                 name="role"
                                 value="member"
                                 checked={role === "member"}
                                 onChange={() => setRole("member")}
-                                label="Member"
-                                className="role-option"
                               />
-                              <Form.Check
+                              <label htmlFor="member-role">Member</label>
+                            </div>
+                            <div className="role-option">
+                              <input
                                 type="radio"
                                 id="admin-role"
                                 name="role"
                                 value="admin"
                                 checked={role === "admin"}
                                 onChange={() => setRole("admin")}
-                                label="Admin"
-                                className="role-option"
                               />
+                              <label htmlFor="admin-role">Admin</label>
                             </div>
-                          </Col>
-                        </Row>
+                          </div>
+                        </div>
 
-                        <motion.div variants={itemVariants} className="mb-3">
-                          <Form.Group>
-                            <Form.Label className="modern-label">Email Address</Form.Label>
-                            <Form.Control
-                              type="email"
-                              placeholder="Enter your email"
-                              value={email}
-                              onChange={(e) => setEmail(e.target.value)}
-                              required
-                              className="modern-input"
-                              disabled={isLoading}
-                            />
-                          </Form.Group>
+                        <motion.div variants={itemVariants} className="form-group-cyber">
+                          <label className="label-cyber">Email Address</label>
+                          <input
+                            type="email"
+                            placeholder="Enter your email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            className="input-cyber"
+                            disabled={isLoading}
+                          />
                         </motion.div>
 
-                        <motion.div variants={itemVariants} className="mb-4">
-                          <Form.Group>
-                            <Form.Label className="modern-label">Password</Form.Label>
-                            <Form.Control
-                              type="password"
-                              placeholder="Enter your password"
-                              value={password}
-                              onChange={(e) => setPassword(e.target.value)}
-                              required
-                              className="modern-input"
-                              disabled={isLoading}
-                            />
-                          </Form.Group>
+                        <motion.div variants={itemVariants} className="form-group-cyber">
+                          <label className="label-cyber">Password</label>
+                          <input
+                            type="password"
+                            placeholder="Enter your password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            className="input-cyber"
+                            disabled={isLoading}
+                          />
                         </motion.div>
 
                         <motion.div
                           variants={itemVariants}
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
-                          className="mb-4"
+                          className="mt-4 mb-3"
                         >
-                          <Button
+                          <button
                             type="submit"
-                            className="btn-modern btn-primary-modern w-100"
-                            size="lg"
+                            className="btn-cyber w-100"
                             disabled={isLoading}
                           >
                             {isLoading ? (
@@ -200,7 +195,7 @@ const SignIn = () => {
                             ) : (
                               "Sign In"
                             )}
-                          </Button>
+                          </button>
                         </motion.div>
 
                         <motion.div variants={itemVariants} className="text-center">

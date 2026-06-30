@@ -77,7 +77,7 @@ const AboutPage = () => {
                             className="text-center"
                         >
                             <h1 className="about-title">
-                                About <span className="gradient-text">FitLife</span>
+                                About <span className="text-gradient-primary">FitLife</span>
                             </h1>
                             <p className="about-subtitle">
                                 Transforming lives through fitness, wellness, and community
@@ -98,7 +98,7 @@ const AboutPage = () => {
                                     viewport={{ once: true }}
                                 >
                                     <h2 className="section-title">
-                                        Our <span className="gradient-text">Story</span>
+                                        Our <span className="text-gradient-primary">Story</span>
                                     </h2>
                                     <p className="story-text">
                                         Founded in 2014, FitLife Gym began with a simple mission: to create a space where 
@@ -118,8 +118,8 @@ const AboutPage = () => {
                                         <Button
                                             as={Link}
                                             to="/Trainers"
-                                            className="btn-modern btn-primary-modern mt-3"
-                                            size="lg"
+                                            variant="none"
+                                            className="btn-cyber mt-3"
                                         >
                                             Meet Our Team
                                         </Button>
@@ -209,7 +209,7 @@ const AboutPage = () => {
                             className="text-center mb-5"
                         >
                             <h2 className="section-title">
-                                World-Class <span className="gradient-text">Facilities</span>
+                                World-Class <span className="text-gradient-primary">Facilities</span>
                             </h2>
                             <p className="section-subtitle">
                                 Everything you need for your fitness journey under one roof
@@ -255,7 +255,7 @@ const AboutPage = () => {
                             className="text-center mb-5"
                         >
                             <h2 className="section-title">
-                                Our <span className="gradient-text">Core Values</span>
+                                Our <span className="text-gradient-primary">Core Values</span>
                             </h2>
                         </motion.div>
 
@@ -317,7 +317,7 @@ const AboutPage = () => {
                             <Card className="cta-card">
                                 <Card.Body className="p-5">
                                     <h2 className="cta-title">
-                                        Ready to Join the <span className="gradient-text">FitLife Family</span>?
+                                        Ready to Join the <span className="text-gradient-primary">FitLife Family</span>?
                                     </h2>
                                     <p className="cta-subtitle">
                                         Take the first step towards a healthier, stronger you. Our team is here to support your journey.
@@ -327,8 +327,8 @@ const AboutPage = () => {
                                             <Button
                                                 as={Link}
                                                 to="/SignUp"
-                                                className="btn-modern btn-primary-modern me-3"
-                                                size="lg"
+                                                variant="none"
+                                                className="btn-cyber me-3"
                                             >
                                                 Start Your Journey
                                             </Button>
@@ -337,8 +337,8 @@ const AboutPage = () => {
                                             <Button
                                                 as={Link}
                                                 to="/Contact"
-                                                variant="outline-primary"
-                                                size="lg"
+                                                variant="none"
+                                                className="btn-cyber-outline"
                                             >
                                                 Contact Us
                                             </Button>

@@ -169,18 +169,17 @@ const UserDashboard = () => {
                   </span>
                 </div>
                 <div className="ms-3">
-                  <h2 className="mb-0 text-gradient">Welcome back, {user.Name}!</h2>
+                  <h2 className="mb-0 text-gradient-primary">Welcome back, {user.Name}!</h2>
                   <p className="text-muted mb-0">Member since {formatDate(user.CreatedAt)}</p>
                 </div>
               </div>
             </Col>
             <Col xs="auto">
               <Button 
-                variant="outline-danger" 
+                variant="none" 
                 onClick={() => setShowLogoutModal(true)}
-                className="btn-modern"
+                className="btn-cyber-outline"
               >
-                <i className="fas fa-sign-out-alt me-2"></i>
                 Logout
               </Button>
             </Col>
@@ -209,8 +208,7 @@ const UserDashboard = () => {
               onClick={() => setActiveTab('profile')}
               className="nav-tab"
             >
-              <i className="fas fa-user me-2"></i>
-              Profile
+              👤 Profile
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
@@ -219,8 +217,7 @@ const UserDashboard = () => {
               onClick={() => setActiveTab('membership')}
               className="nav-tab"
             >
-              <i className="fas fa-dumbbell me-2"></i>
-              Membership
+              🏋️ Membership
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
@@ -229,8 +226,7 @@ const UserDashboard = () => {
               onClick={() => setActiveTab('fitness')}
               className="nav-tab"
             >
-              <i className="fas fa-heart me-2"></i>
-              Fitness Profile
+              ❤️ Fitness Profile
             </Nav.Link>
           </Nav.Item>
         </Nav>
@@ -247,12 +243,10 @@ const UserDashboard = () => {
                   <Card.Header className="card-header-modern">
                     <div className="d-flex justify-content-between align-items-center">
                       <h5 className="mb-0">
-                        <i className="fas fa-user-circle me-2 text-primary"></i>
-                        Personal Information
+                        👤 Personal Information
                       </h5>
                       {!isEditing && (
-                        <Button variant="outline-primary" size="sm" onClick={handleEdit}>
-                          <i className="fas fa-edit me-1"></i>
+                        <Button variant="none" className="btn-cyber-outline" onClick={handleEdit}>
                           Edit Profile
                         </Button>
                       )}
@@ -316,12 +310,10 @@ const UserDashboard = () => {
 
                       {isEditing && (
                         <div className="d-flex gap-2 mt-3">
-                          <Button type="submit" variant="success" className="btn-modern">
-                            <i className="fas fa-save me-1"></i>
+                          <Button type="submit" variant="none" className="btn-cyber">
                             Save Changes
                           </Button>
-                          <Button type="button" variant="outline-secondary" onClick={handleCancel}>
-                            <i className="fas fa-times me-1"></i>
+                          <Button type="button" variant="none" className="btn-cyber-outline" onClick={handleCancel}>
                             Cancel
                           </Button>
                         </div>
@@ -335,13 +327,13 @@ const UserDashboard = () => {
                 <Card className="dashboard-card status-card">
                   <Card.Body className="text-center">
                     <div className="status-icon mb-3">
-                      <i className="fas fa-user-check"></i>
+                      👤
                     </div>
                     <h6 className="text-muted mb-2">Account Status</h6>
                     <Badge bg={getStatusColor(user.Status)} className="status-badge">
                       {user.Status}
                     </Badge>
-                    <hr className="my-3" />
+                    <hr className="my-3" style={{ borderColor: 'var(--border-carbon)' }} />
                     <div className="stat-item">
                       <span className="stat-label">Member ID</span>
                       <span className="stat-value">#{id?.slice(-6) || 'N/A'}</span>
@@ -364,8 +356,7 @@ const UserDashboard = () => {
                 <Card className="dashboard-card">
                   <Card.Header className="card-header-modern">
                     <h5 className="mb-0">
-                      <i className="fas fa-dumbbell me-2 text-primary"></i>
-                      Membership Details
+                      🏋️ Membership Details
                     </h5>
                   </Card.Header>
                   <Card.Body>
@@ -378,8 +369,7 @@ const UserDashboard = () => {
                               {user.Plan} Plan
                             </Badge>
                             <small className="text-success">
-                              <i className="fas fa-check-circle me-1"></i>
-                              Active
+                              ✓ Active
                             </small>
                           </div>
                           
@@ -401,7 +391,7 @@ const UserDashboard = () => {
                         <div className="membership-stats">
                           <div className="stat-card">
                             <div className="stat-icon">
-                              <i className="fas fa-calendar-check"></i>
+                              📅
                             </div>
                             <div>
                               <h6 className="mb-0">Join Date</h6>
@@ -411,7 +401,7 @@ const UserDashboard = () => {
                           
                           <div className="stat-card">
                             <div className="stat-icon">
-                              <i className="fas fa-star"></i>
+                              ⭐
                             </div>
                             <div>
                               <h6 className="mb-0">Plan Benefits</h6>
@@ -429,23 +419,19 @@ const UserDashboard = () => {
                 <Card className="dashboard-card quick-actions">
                   <Card.Header className="card-header-modern">
                     <h6 className="mb-0">
-                      <i className="fas fa-bolt me-2"></i>
-                      Quick Actions
+                      ⚡ Quick Actions
                     </h6>
                   </Card.Header>
                   <Card.Body>
                     <div className="d-grid gap-2">
-                      <Button variant="outline-primary" size="sm" className="action-btn">
-                        <i className="fas fa-credit-card me-2"></i>
-                        Payment History
+                      <Button variant="none" className="action-btn">
+                        💳 Payment History
                       </Button>
-                      <Button variant="outline-success" size="sm" className="action-btn">
-                        <i className="fas fa-arrow-up me-2"></i>
-                        Upgrade Plan
+                      <Button variant="none" className="action-btn">
+                        📈 Upgrade Plan
                       </Button>
-                      <Button variant="outline-info" size="sm" className="action-btn">
-                        <i className="fas fa-pause me-2"></i>
-                        Freeze Membership
+                      <Button variant="none" className="action-btn">
+                        ⏸️ Freeze Membership
                       </Button>
                     </div>
                   </Card.Body>
@@ -466,8 +452,7 @@ const UserDashboard = () => {
                 <Card className="dashboard-card">
                   <Card.Header className="card-header-modern">
                     <h5 className="mb-0">
-                      <i className="fas fa-heart me-2 text-primary"></i>
-                      Fitness Profile
+                      ❤️ Fitness Profile
                     </h5>
                   </Card.Header>
                   <Card.Body>
@@ -499,13 +484,11 @@ const UserDashboard = () => {
                           <div className="medical-card">
                             {user.MedicalConditions ? (
                               <p className="mb-0 text-warning">
-                                <i className="fas fa-exclamation-triangle me-2"></i>
-                                {user.MedicalConditions}
+                                ⚠️ {user.MedicalConditions}
                               </p>
                             ) : (
                               <p className="mb-0 text-success">
-                                <i className="fas fa-check-circle me-2"></i>
-                                No medical conditions reported
+                                ✓ No medical conditions reported
                               </p>
                             )}
                           </div>
@@ -520,13 +503,12 @@ const UserDashboard = () => {
                 <Card className="dashboard-card fitness-goals">
                   <Card.Header className="card-header-modern">
                     <h6 className="mb-0">
-                      <i className="fas fa-target me-2"></i>
-                      Fitness Journey
+                      🎯 Fitness Journey
                     </h6>
                   </Card.Header>
                   <Card.Body className="text-center">
                     <div className="goal-icon mb-3">
-                      <i className="fas fa-trophy"></i>
+                      🏆
                     </div>
                     <h6 className="text-muted mb-2">Current Focus</h6>
                     <Badge bg="primary" className="goal-badge">

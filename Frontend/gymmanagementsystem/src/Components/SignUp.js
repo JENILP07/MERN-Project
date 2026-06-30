@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Container, Row, Col, Form, Button, Alert, Card, ProgressBar, Badge } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
+import Navigation from "./Navigation";
+import Footer from "./Footer";
 import "./MembershipForm.css"; // Import custom CSS for additional styling
 
 const MembershipForm = () => {
@@ -474,82 +476,87 @@ const MembershipForm = () => {
   );
 
   return (
-    <Container className="my-5">
-      <Row className="justify-content-center">
-        <Col lg={8} xl={6}>
-          <Card className="membership-form-card shadow-lg">
-            <Card.Body className="p-5">
-              <div className="text-center mb-4">
-                <h2 className="main-title">🏋️‍♂️ Join Our Gym Family</h2>
-                <p className="subtitle">Start your fitness journey today!</p>
-              </div>
-              
-              {/* Progress Bar */}
-              <div className="progress-container mb-4">
-                <ProgressBar className="custom-progress">
-                  <ProgressBar 
-                    variant="success" 
-                    now={(currentStep / totalSteps) * 100} 
-                    key={1}
-                  />
-                </ProgressBar>
-                <div className="step-indicators">
-                  {[1, 2, 3].map(step => (
-                    <div key={step} className={`step-indicator ${currentStep >= step ? 'active' : ''}`}>
-                      {step}
+    <div className="signup-page-wrapper" style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+      <Navigation />
+      
+      <div style={{ flex: 1, position: "relative", zIndex: 2 }}>
+        <Container className="my-5 py-4">
+          <Row className="justify-content-center">
+            <Col lg={8} xl={7}>
+              <Card className="membership-form-card border-0">
+                <Card.Body>
+                  <div className="text-center mb-5">
+                    <h2 className="main-title">Join Our <span className="text-gradient-primary">Gym Family</span></h2>
+                    <p className="subtitle">Start your fitness journey today!</p>
+                  </div>
+                  
+                  {/* Progress Bar */}
+                  <div className="progress-container">
+                    <ProgressBar className="custom-progress">
+                      <ProgressBar 
+                        now={(currentStep / totalSteps) * 100} 
+                        key={1}
+                      />
+                    </ProgressBar>
+                    <div className="step-indicators">
+                      {[1, 2, 3].map(step => (
+                        <div key={step} className={`step-indicator ${currentStep >= step ? 'active' : ''}`}>
+                          {step}
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-                <small className="text-muted">Step {currentStep} of {totalSteps}</small>
-              </div>
-              
-              {showAlert && (
-                <Alert variant={alertVariant} className="custom-alert">
-                  {alertMessage}
-                </Alert>
-              )}
-              
-              <Form onSubmit={handleSubmit}>
-                {currentStep === 1 && renderStep1()}
-                {currentStep === 2 && renderStep2()}
-                {currentStep === 3 && renderStep3()}
-                
-                <div className="form-navigation mt-4">
-                  {currentStep > 1 && (
-                    <Button 
-                      variant="outline-secondary" 
-                      onClick={prevStep}
-                      className="me-2"
-                    >
-                      ← Previous
-                    </Button>
+                  </div>
+                  
+                  {showAlert && (
+                    <Alert variant={alertVariant} className="custom-alert">
+                      {alertMessage}
+                    </Alert>
                   )}
                   
-                  {currentStep < totalSteps ? (
-                    <Button 
-                      variant="primary" 
-                      onClick={nextStep}
-                      className="ms-auto d-block"
-                    >
-                      Next →
-                    </Button>
-                  ) : (
-                    <Button 
-                      variant="success" 
-                      type="submit" 
-                      className="ms-auto d-block submit-btn"
-                      size="lg"
-                    >
-                      🚀 Complete Registration
-                    </Button>
-                  )}
-                </div>
-              </Form>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+                  <Form onSubmit={handleSubmit}>
+                    {currentStep === 1 && renderStep1()}
+                    {currentStep === 2 && renderStep2()}
+                    {currentStep === 3 && renderStep3()}
+                    
+                    <div className="form-navigation">
+                      {currentStep > 1 && (
+                        <Button 
+                          variant="none"
+                          onClick={prevStep}
+                          className="btn-cyber-outline"
+                        >
+                          ← Previous
+                        </Button>
+                      )}
+                      
+                      {currentStep < totalSteps ? (
+                        <Button 
+                          variant="none"
+                          onClick={nextStep}
+                          className="btn-cyber ms-auto d-block"
+                        >
+                          Next →
+                        </Button>
+                      ) : (
+                        <Button 
+                          variant="none"
+                          type="submit" 
+                          className="btn-cyber-secondary submit-btn ms-auto d-block"
+                        >
+                          🚀 Complete Registration
+                        </Button>
+                      )}
+                    </div>
+                  </Form>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+
+      <Footer />
+    </div>
   );
 };
 

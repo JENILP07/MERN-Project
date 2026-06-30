@@ -1,5 +1,4 @@
-import React from "react";
-import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import { Container, Row, Col, Button, Card, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -31,41 +30,9 @@ const Home = () => {
     }
   };
 
-  const statsAnimation = {
-    initial: { opacity: 0, y: 30, scale: 0.8 },
-    animate: { 
-      opacity: 1, 
-      y: 0, 
-      scale: 1,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
-  };
-
-  const statsHover = {
-    hover: {
-      scale: 1.08,
-      y: -10,
-      rotateY: 5,
-      transition: { 
-        duration: 0.4,
-        type: "spring",
-        stiffness: 300
-      }
-    },
-    tap: {
-      scale: 0.95
-    }
-  };
-
-  const pulseAnimation = {
-    animate: {
-      scale: [1, 1.02, 1],
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
+  const handleEmailSubmit = (e) => {
+    e.preventDefault();
+    alert("🎉 Thank you! Get ready to take your training platform to the next level.");
   };
 
   return (
@@ -79,161 +46,95 @@ const Home = () => {
         </div>
         <Container className="hero-content">
           <Row className="align-items-center min-vh-100">
-            <Col lg={6}>
+            <Col lg={5}>
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                <h1 className="hero-title">
-                  Elevate Your Fitness Journey
+                <h1 className="hero-title-interactive">
+                  Smart Platform for <span className="text-gradient-primary">Health & Fitness</span> Trainers
+                  <div className="title-icons-pill">
+                    <span className="pill-icon">🧘‍♀️</span>
+                    <span className="pill-icon">🏋️‍♂️</span>
+                    <span className="pill-icon">🏃‍♂️</span>
+                    <span className="pill-icon">🛡️</span>
+                  </div>
                 </h1>
-                <p className="hero-subtitle">
-                  Transform your body and mind with our world-class facilities, expert trainers, and personalized fitness programs designed specifically for your goals and lifestyle.
+                <p className="hero-subtitle-interactive">
+                  Smart tools to help instructors grow and deliver exceptional coaching.
                 </p>
-                <div className="hero-buttons">
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button 
-                      as={Link} 
-                      to="/SignUp" 
-                      size="lg"
-                      className="btn-modern btn-primary-modern me-3"
-                    >
-                      Start Your Journey
+                
+                <Form onSubmit={handleEmailSubmit} className="hero-email-form">
+                  <div className="nested-input-container">
+                    <span className="mail-icon">✉️</span>
+                    <input 
+                      type="email" 
+                      placeholder="Enter Your Email" 
+                      className="nested-input-field" 
+                      required 
+                    />
+                    <Button type="submit" variant="none" className="btn-cyber nested-submit-btn">
+                      Get Started
                     </Button>
-                  </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button 
-                      as={Link} 
-                      to="#plans" 
-                      variant="outline-light" 
-                      size="lg"
-                      className="btn-modern btn-outline-modern"
-                    >
-                      View Plans
-                    </Button>
-                  </motion.div>
+                  </div>
+                </Form>
+
+                <div className="trusted-coaches-row">
+                  <div className="avatar-stack">
+                    <div className="avatar-circle av-1">JD</div>
+                    <div className="avatar-circle av-2">AM</div>
+                    <div className="avatar-circle av-3">KL</div>
+                    <div className="avatar-circle av-4">SR</div>
+                  </div>
+                  <span className="trusted-text">Trusted by 1000+ health coaches</span>
                 </div>
               </motion.div>
             </Col>
-            <Col lg={6}>
+            <Col lg={7}>
               <motion.div
-                initial={{ opacity: 0, x: 50, rotate: -5 }}
-                animate={{ opacity: 1, x: 0, rotate: 0 }}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="hero-image-container"
+                className="hero-interactive-container"
               >
-                <motion.div 
-                  className="hero-stats"
-                  variants={staggerContainer}
-                  initial="initial"
-                  animate="animate"
-                >
-                  {[
-                    {
-                      number: "500+",
-                      label: "Happy Members",
-                      icon: "👥",
-                      gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-                      delay: 0.6
-                    },
-                    {
-                      number: "50+",
-                      label: "Expert Trainers",
-                      icon: "💪",
-                      gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-                      delay: 0.8
-                    },
-                    {
-                      number: "24/7",
-                      label: "Gym Access",
-                      icon: "🔓",
-                      gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
-                      delay: 1.0
-                    },
-                    {
-                      number: "5★",
-                      label: "Rating",
-                      icon: "⭐",
-                      gradient: "linear-gradient(135deg, #ffd89b 0%, #19547b 100%)",
-                      delay: 1.2
-                    }
-                  ].map((stat, index) => (
-                    <motion.div
-                      key={index}
-                      className="stat-card-enhanced"
-                      variants={statsAnimation}
-                      whileHover={statsHover.hover}
-                      whileTap={statsHover.tap}
-                      initial={{
-                        opacity: 0,
-                        y: 50,
-                        scale: 0.8,
-                        rotateX: -15
-                      }}
-                      animate={{
-                        opacity: 1,
-                        y: 0,
-                        scale: 1,
-                        rotateX: 0,
-                        transition: {
-                          duration: 0.8,
-                          delay: stat.delay,
-                          type: "spring",
-                          stiffness: 100,
-                          damping: 15
-                        }
-                      }}
-                      style={{
-                        background: stat.gradient,
-                        perspective: "1000px"
-                      }}
-                    >
-                      <motion.div 
-                        className="stat-icon"
-                        variants={pulseAnimation}
-                        animate="animate"
-                      >
-                        {stat.icon}
-                      </motion.div>
-                      <motion.div className="stat-content">
-                        <motion.h3 
-                          className="stat-number"
-                          initial={{ scale: 0 }}
-                          animate={{ 
-                            scale: 1,
-                            transition: {
-                              delay: stat.delay + 0.3,
-                              type: "spring",
-                              stiffness: 200
-                            }
-                          }}
-                        >
-                          {stat.number}
-                        </motion.h3>
-                        <motion.p 
-                          className="stat-label"
-                          initial={{ opacity: 0 }}
-                          animate={{ 
-                            opacity: 1,
-                            transition: {
-                              delay: stat.delay + 0.5
-                            }
-                          }}
-                        >
-                          {stat.label}
-                        </motion.p>
-                      </motion.div>
-                      <div className="stat-shine"></div>
-                    </motion.div>
-                  ))}
-                </motion.div>
+                <div className="interactive-wrapper">
+                  <img 
+                    src="/yoga_lunge.png" 
+                    alt="Premium Health & Fitness Platform" 
+                    className="interactive-image"
+                  />
+                  
+                  {/* Callout 1: Hand */}
+                  <div className="callout-point callout-hand">
+                    <span className="callout-dot"></span>
+                    <span className="callout-pulse"></span>
+                    <div className="callout-label label-hand">
+                      <span className="label-line"></span>
+                      <p className="callout-content">Train up to 100 clients during trial.</p>
+                    </div>
+                  </div>
+
+                  {/* Callout 2: Waist */}
+                  <div className="callout-point callout-waist">
+                    <span className="callout-dot"></span>
+                    <span className="callout-pulse"></span>
+                    <div className="callout-label label-waist">
+                      <span className="label-line"></span>
+                      <p className="callout-content">Wearable Integration</p>
+                    </div>
+                  </div>
+
+                  {/* Callout 3: Knee */}
+                  <div className="callout-point callout-knee">
+                    <span className="callout-dot"></span>
+                    <span className="callout-pulse"></span>
+                    <div className="callout-label label-knee">
+                      <span className="label-line"></span>
+                      <p className="callout-content">Custom Branded App</p>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
             </Col>
           </Row>
@@ -250,7 +151,7 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center mb-5"
           >
-            <h2 className="section-title">Why Choose <span className="gradient-text">FitLife</span>?</h2>
+            <h2 className="section-title">Why Choose <span className="text-gradient-primary">FitLife</span>?</h2>
             <p className="section-subtitle">
               Discover what makes us the premier choice for fitness enthusiasts
             </p>
@@ -269,21 +170,21 @@ const Home = () => {
                   description: "Work with certified personal trainers for customized workout plans tailored to your specific goals and fitness level.",
                   icon: "🏋️‍♂️",
                   link: "/Trainers",
-                  gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+                  gradient: "linear-gradient(135deg, var(--primary-glow) 0%, #704728 100%)"
                 },
                 {
                   title: "Group Classes",
                   description: "Join energizing group classes from yoga to HIIT. Perfect for all fitness levels with expert instruction.",
                   icon: "👥",
-                  link: "/Classes",
-                  gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
+                  link: "/Trainers",
+                  gradient: "linear-gradient(135deg, var(--secondary-glow) 0%, #204f3b 100%)"
                 },
                 {
                   title: "Nutrition Guidance",
                   description: "Get expert nutritional advice to complement your workouts and accelerate your fitness results.",
                   icon: "🥗",
                   link: "/NutritionGuidance",
-                  gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
+                  gradient: "linear-gradient(135deg, var(--primary-glow) 0%, var(--secondary-glow) 100%)"
                 }
               ].map((feature, index) => (
                 <Col md={4} key={index}>
@@ -310,8 +211,8 @@ const Home = () => {
                           <Button 
                             as={Link} 
                             to={feature.link}
-                            variant="outline-primary"
-                            className="btn-modern feature-btn"
+                            variant="none"
+                            className="btn-cyber-outline w-100"
                           >
                             Learn More
                           </Button>
@@ -336,7 +237,7 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center mb-5"
           >
-            <h2 className="section-title">Choose Your <span className="gradient-text">Membership</span></h2>
+            <h2 className="section-title">Choose Your <span className="text-gradient-primary">Membership</span></h2>
             <p className="section-subtitle">
               Flexible plans designed to fit your lifestyle and budget
             </p>
@@ -361,7 +262,11 @@ const Home = () => {
                     "Group classes (limited)",
                     "Mobile app access"
                   ],
-                  gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+                  gradient: "linear-gradient(135deg, #ffffff 0%, var(--bg-carbon-light) 100%)",
+                  textColor: "var(--text-platinum)",
+                  priceColor: "var(--text-platinum)",
+                  currencyColor: "var(--text-slate)",
+                  periodColor: "var(--text-slate)"
                 },
                 {
                   name: "Standard",
@@ -375,7 +280,11 @@ const Home = () => {
                     "Nutrition consultation",
                     "Guest passes (2/month)"
                   ],
-                  gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
+                  gradient: "linear-gradient(135deg, var(--primary-glow) 0%, #704728 100%)",
+                  textColor: "#ffffff",
+                  priceColor: "#ffffff",
+                  currencyColor: "rgba(255, 255, 255, 0.8)",
+                  periodColor: "rgba(255, 255, 255, 0.7)"
                 },
                 {
                   name: "Premium",
@@ -389,7 +298,11 @@ const Home = () => {
                     "Spa & recovery services",
                     "Unlimited guest passes"
                   ],
-                  gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
+                  gradient: "linear-gradient(135deg, var(--secondary-glow) 0%, #204f3b 100%)",
+                  textColor: "#ffffff",
+                  priceColor: "#ffffff",
+                  currencyColor: "rgba(255, 255, 255, 0.8)",
+                  periodColor: "rgba(255, 255, 255, 0.7)"
                 }
               ].map((plan, index) => (
                 <Col lg={4} md={6} key={index}>
@@ -406,13 +319,13 @@ const Home = () => {
                     <Card className={`pricing-card h-100 ${plan.popular ? 'popular-plan' : ''}`}>
                       <div 
                         className="pricing-header" 
-                        style={{ background: plan.gradient }}
+                        style={{ background: plan.gradient, color: plan.textColor }}
                       >
-                        <h3 className="plan-name">{plan.name}</h3>
-                        <div className="plan-price">
-                          <span className="currency">$</span>
-                          <span className="amount">{plan.price}</span>
-                          <span className="period">/year</span>
+                        <h3 className="plan-name" style={{ color: plan.textColor }}>{plan.name}</h3>
+                        <div className="plan-price" style={{ color: plan.textColor }}>
+                          <span className="currency" style={{ color: plan.currencyColor }}>$</span>
+                          <span className="amount" style={{ color: plan.textColor }}>{plan.price}</span>
+                          <span className="period" style={{ color: plan.periodColor }}>/year</span>
                         </div>
                       </div>
                       <Card.Body className="p-4">
@@ -432,12 +345,12 @@ const Home = () => {
                           <Button 
                             as={Link} 
                             to="/SignUp" 
-                            className={`btn-modern w-100 ${
+                            variant="none"
+                            className={`w-100 ${
                               plan.popular 
-                                ? 'btn-primary-modern' 
-                                : 'btn-outline-primary'
+                                ? 'btn-cyber' 
+                                : 'btn-cyber-outline'
                             }`}
-                            size="lg"
                           >
                             Get Started
                           </Button>

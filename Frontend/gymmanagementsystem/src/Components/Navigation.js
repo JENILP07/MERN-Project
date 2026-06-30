@@ -53,7 +53,7 @@ const Navigation = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Navbar.Brand as={Link} to="/home" className="brand-logo">
+            <Navbar.Brand as={Link} to="/" className="brand-logo">
               <div className="logo-container">
                 <div className="logo-icon">
                   <svg viewBox="0 0 24 24" className="logo-svg">
@@ -63,7 +63,7 @@ const Navigation = () => {
                   <div className="logo-pulse"></div>
                 </div>
                 <div className="brand-content">
-                  <span className="brand-text gradient-text">FitLife</span>
+                  <span className="brand-text">FitLife</span>
                   <span className="brand-subtitle">Gym Management</span>
                 </div>
               </div>
@@ -79,7 +79,7 @@ const Navigation = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mx-auto">
               {[
-                { path: "/home", name: "Home" },
+                { path: "/", name: "Home" },
                 { path: "/About", name: "About" },
                 { path: "/Trainers", name: "Trainers" },
                 { path: "/Contact", name: "Contact" },
@@ -96,7 +96,7 @@ const Navigation = () => {
                     as={Link}
                     to={item.path}
                     className={`nav-link-modern ${
-                      location.pathname === item.path ? "active" : ""
+                      location.pathname === item.path || (item.path === "/" && location.pathname === "/Home") ? "active" : ""
                     }`}
                   >
                     {item.name}
@@ -115,8 +115,7 @@ const Navigation = () => {
                 <Button 
                   as={Link} 
                   to="/SignIn" 
-                  variant="outline-primary" 
-                  className="btn-modern btn-signin me-2"
+                  className="btn-cyber-outline btn-signin"
                 >
                   Sign In
                 </Button>
@@ -130,7 +129,7 @@ const Navigation = () => {
                 <Button 
                   as={Link} 
                   to="/SignUp" 
-                  className="btn-modern btn-primary-modern"
+                  className="btn-cyber"
                 >
                   Get Started
                 </Button>

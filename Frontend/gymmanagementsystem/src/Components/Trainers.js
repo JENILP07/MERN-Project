@@ -127,7 +127,7 @@ const Trainer = () => {
                             className="text-center"
                         >
                             <h1 className="trainers-title">
-                                Meet Our Expert <span className="gradient-text">Trainers</span>
+                                Meet Our Expert <span className="text-gradient-primary">Trainers</span>
                             </h1>
                             <p className="trainers-subtitle">
                                 Our certified fitness professionals are here to guide you on your fitness journey
@@ -219,7 +219,8 @@ const Trainer = () => {
                                                             whileTap={{ scale: 0.98 }}
                                                         >
                                                             <Button
-                                                                className="btn-modern btn-primary-modern w-100"
+                                                                variant="none"
+                                                                className="btn-cyber w-100"
                                                                 onClick={() => navigate('/Classes')}
                                                             >
                                                                 View Classes
@@ -231,8 +232,8 @@ const Trainer = () => {
                                                             className="mt-2"
                                                         >
                                                             <Button
-                                                                variant="outline-primary"
-                                                                className="w-100"
+                                                                variant="none"
+                                                                className="btn-cyber-outline w-100"
                                                                 onClick={() => navigate('/Contact')}
                                                             >
                                                                 Book Session
@@ -262,7 +263,7 @@ const Trainer = () => {
                             <Card className="cta-card">
                                 <Card.Body className="p-5">
                                     <h2 className="cta-title">
-                                        Ready to Start Your <span className="gradient-text">Fitness Journey</span>?
+                                        Ready to Start Your <span className="text-gradient-primary">Fitness Journey</span>?
                                     </h2>
                                     <p className="cta-subtitle">
                                         Book a consultation with one of our expert trainers and get a personalized fitness plan
@@ -270,17 +271,17 @@ const Trainer = () => {
                                     <div className="cta-buttons">
                                         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                                             <Button
-                                                as={() => <button onClick={() => navigate('/SignUp')}>Get Started</button>}
-                                                className="btn-modern btn-primary-modern me-3"
-                                                size="lg"
+                                                variant="none"
+                                                className="btn-cyber me-3"
+                                                onClick={() => navigate('/SignUp')}
                                             >
                                                 Get Started
                                             </Button>
                                         </motion.div>
                                         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                                             <Button
-                                                variant="outline-primary"
-                                                size="lg"
+                                                variant="none"
+                                                className="btn-cyber-outline"
                                                 onClick={() => navigate('/Contact')}
                                             >
                                                 Contact Us

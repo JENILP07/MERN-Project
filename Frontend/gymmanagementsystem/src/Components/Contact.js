@@ -125,7 +125,7 @@ const ContactPage = () => {
                             className="text-center"
                         >
                             <h1 className="contact-title">
-                                Get In <span className="gradient-text">Touch</span>
+                                Get In <span className="text-gradient-primary">Touch</span>
                             </h1>
                             <p className="contact-subtitle">
                                 Have questions about our services or want to start your fitness journey? 
@@ -182,10 +182,10 @@ const ContactPage = () => {
                                     whileInView="visible"
                                     viewport={{ once: true }}
                                 >
-                                    <Card className="contact-form-card">
+                                    <Card className="contact-form-card border-0">
                                         <Card.Body className="p-5">
                                             <h2 className="form-title mb-4">
-                                                Send Us a <span className="gradient-text">Message</span>
+                                                Send Us a <span className="text-gradient-primary">Message</span>
                                             </h2>
                                             <p className="form-subtitle mb-4">
                                                 Fill out the form below and we'll get back to you as soon as possible.
@@ -293,14 +293,14 @@ const ContactPage = () => {
                                                 >
                                                     <Button
                                                         type="submit"
-                                                        className="btn-modern btn-primary-modern w-100"
-                                                        size="lg"
+                                                        variant="none"
+                                                        className="btn-cyber w-100"
                                                         disabled={isSubmitting}
                                                     >
                                                         {isSubmitting ? (
                                                             <>
                                                                 <span className="spinner-border spinner-border-sm me-2" role="status"></span>
-                                                                Sending Message...
+                                                                Sending...
                                                             </>
                                                         ) : (
                                                             'Send Message'
@@ -338,7 +338,7 @@ const ContactPage = () => {
                                             </div>
                                             <div className="location-info p-4">
                                                 <h3 className="location-title">
-                                                    Visit Our <span className="gradient-text">Gym</span>
+                                                    Visit Our <span className="text-gradient-primary">Gym</span>
                                                 </h3>
                                                 <p className="location-description">
                                                     Come and experience our state-of-the-art facilities, meet our expert trainers, 
@@ -351,7 +351,8 @@ const ContactPage = () => {
                                                     <Button
                                                         as={Link}
                                                         to="/About"
-                                                        className="btn-modern btn-secondary-modern"
+                                                        variant="none"
+                                                        className="btn-cyber-secondary"
                                                     >
                                                         Learn More About Us
                                                     </Button>
@@ -376,7 +377,7 @@ const ContactPage = () => {
                             className="text-center mb-5"
                         >
                             <h2 className="section-title">
-                                Frequently Asked <span className="gradient-text">Questions</span>
+                                Frequently Asked <span className="text-gradient-primary">Questions</span>
                             </h2>
                             <p className="section-subtitle">
                                 Quick answers to common questions about our gym and services
